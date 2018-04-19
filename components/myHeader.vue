@@ -12,13 +12,13 @@
                     写文章
                 </nuxt-link>
                 <!--登录用户信息-->
-                <div class="user">
+                <div class="user" @mouseover="isShow=true" @mouseout="isShow=false">
                     <div class="drop-down">
                         <nuxt-link to="/u123" class="avatar">
                             <img src="~/assets/img/1.jpg">
                         </nuxt-link>
                     </div>
-                    <ul class="drop-menu">
+                    <ul class="drop-menu" v-show="isShow">
                         <li>
                             <nuxt-link to="/user/123">
                                 <i class="fa fa-home"></i>
@@ -59,7 +59,11 @@
 
 <script>
 export default {
-  
+    data(){
+        return{
+            isShow:false
+        }
+    }
 }
 </script>
 
@@ -117,12 +121,15 @@ export default {
         position: relative;
         float: right;
     }
+    nav .user:hover{
+        background: #f5f5f5;
+    }
     nav .user .avatar{
         position: relative;
         display: block;
         width: 40px;
         height: 40px;
-        margin: 8px 10px 8px 25px;
+        margin: 8px 28px 8px 20px;
     }
     nav .user .avatar:before{
         content: '';
@@ -138,5 +145,30 @@ export default {
         height: 100%;
         border-radius: 50%;
         border: 1px solid #eee;
+    }
+    nav .user .drop-menu{
+        position: absolute;
+        box-shadow: 0 0 8px rgba(0,0,0,.1);
+        min-width: 160px;
+        z-index: 999;
+        margin: 0;
+        padding: 10px 0;
+        font-size: 15px;
+    }
+    nav .user .drop-menu li a{
+        padding: 10px 20px;
+        line-height: 30px;
+        display: block;
+    }
+    nav .user .drop-menu li a:hover{
+        background: #f5f5f5;
+    }
+    nav .user .drop-menu li a i{
+        margin-right: 10px;
+        color: #ea6f5a;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        display: inline-block;
     }
 </style>
