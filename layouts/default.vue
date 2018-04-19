@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="default">
     <nuxt/>
   </div>
 </template>
@@ -20,5 +20,10 @@ export default {
 </script>
 
 <style>
+  body{
+    padding-top: 56px;
+    min-width: 768px;
+    font-size: 17px;
+  }
 
 </style>

@@ -9,10 +9,11 @@ html,body{
     font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     line-height: 1.42857;
     background-color: #FFF;
-    height: 100%;
+    height: 100vh;
 }
 ul,ol,dl{
     list-style: none;
+    padding: 0;
 }
 input,input:hover,input:active,input:focus{
     outline: none;
@@ -34,4 +35,10 @@ a:active{
 }
 p{
     margin: 0;
+}
+#__nuxt,#__layout,#sign-templet{
+    height: 100%;
+}
+body{
+    overflow-x: hidden;
 }

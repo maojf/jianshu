@@ -13,7 +13,7 @@
                 <h4>
                     <nuxt-link class="active" to="/sign-in">登录</nuxt-link>
                     ·
-                    <nuxt-link class="" to="/sign-out">注册</nuxt-link>
+                    <nuxt-link class="" to="/sign-up">注册</nuxt-link>
                 </h4>
             </div>
             <!--form表单-->
@@ -23,7 +23,7 @@
                         <input type="text" placeholder="手机号或邮箱">
                         <i class="fa fa-user"></i>
                     </div>
-                    <div class="input-prepend">
+                    <div class="input-prepend input-password">
                         <input type="text" placeholder="密码">
                         <i class="fa fa-lock"></i>
                     </div>
@@ -31,25 +31,27 @@
                         <input type="checkbox">
                         <span>记住我</span>
                     </div>
-                    <nuxt-link class="help" to="/">登录遇到问题?</nuxt-link>
-                    <button>登录</button>
+                    <div class="help">
+                        <nuxt-link to="/">登录遇到问题?</nuxt-link>
+                    </div>
+                    <button class="sign-in-btn">登录</button>
                 </form>
             </div>
             <!--第三方登录-->
             <div class="more-sign">
                 <p>社交账号登录</p>
                 <ul>
-                    <li>
+                    <li class="weixin">
                         <nuxt-link to="/">
                             <i class="fa fa-weixin"></i>
                         </nuxt-link>
                     </li>
-                    <li>
+                    <li class="weibo">
                         <nuxt-link to="/">
                             <i class="fa fa-weibo"></i>
                         </nuxt-link>
                     </li>
-                    <li>
+                    <li class="qq">
                         <nuxt-link to="/">
                             <i class="fa fa-qq"></i>
                         </nuxt-link>
@@ -62,23 +64,21 @@
 
 <script>
 export default {
-    // 修改当前页面的默认模板为sign.vue
-    // 如果不写的话，默认是default.vue
-    layout:'sign',
-    // 设置页面的标题以及描述、关键字等元信息
-    head:{
-        title:'登录-简书',
-        meta:[
-            {'charset':'utf-8'},
-            {'keywords':'登录页面'},
-            {'name':'dscription','content':'登录简书'},
-            {'name':'author','content':'毛江峰'}
-        ]
-    },
-    data(){
-        return{
-
-        }
-    }
-}
+  // 修改当前页面的默认模板为sign.vue
+  // 如果不写的话，默认是default.vue
+  layout: "sign",
+  // 设置页面的标题以及描述、关键字等元信息
+  head: {
+    title: "登录-简书",
+    meta: [
+      { charset: "utf-8" },
+      { keywords: "登录页面" },
+      { name: "dscription", content: "登录简书" },
+      { name: "author", content: "毛江峰" }
+    ]
+  },
+  data() {
+    return {};
+  }
+};
 </script>
