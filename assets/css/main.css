@@ -36,7 +36,10 @@ a:active{
 p{
     margin: 0;
 }
-#__nuxt,#__layout,#sign-templet{
+#default-tempalet{
+    height: 100%;
+}
+#__nuxt,#__layout,#sign-tempalet{
     height: 100%;
 }
 body{

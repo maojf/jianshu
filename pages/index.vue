@@ -1,5 +1,5 @@
 <template>
-    <div id="index">
+    <div id="index" style="height:100%">
         <my-header></my-header>
         <p>我的主题内容部分</p>
     </div>
