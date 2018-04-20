@@ -54,7 +54,19 @@
                 <!--右上角-->
                 <!--导航部分-->
                 <div class="container">
-                    <ul class="nav-list">
+                    <div class="navbar-header">
+                        <button @click="isNavListShow=!isNavListShow">
+                            <span class="icon"></span>
+                            <span class="icon"></span>
+                            <span class="icon"></span>
+                        </button>
+                    </div>
+
+
+                    <transition name="custom-classes-transition" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
+
+  
+                    <ul class="nav-list" v-show="screenWidth>768?true:isNavListShow">
                         <li>
                             <nuxt-link to="/" class="active">
                                 <i class="fa fa-compass"></i>
@@ -72,7 +84,7 @@
                                 <i class="fa fa-bell-o"></i>
                                 <span>消息</span>
                             </nuxt-link>
-                            <ul class="drop-menu" v-show="notifyShow">
+                            <ul class="drop-menu" v-show="notifyShow&&screenWidth>768">
                                 <li>
                                     <nuxt-link to="/">
                                         <i class="fa fa-comment-o"></i>
@@ -108,6 +120,11 @@
                             </form>
                         </li>
                     </ul>
+
+
+                    </transition>
+
+
                 </div>
             </div>
         </nav>
@@ -119,9 +136,20 @@ export default {
   data() {
     return {
       isShow: false,
-      notifyShow:false
+      notifyShow: false,
+      isNavListShow:false,
+      screenWidth: 0
     };
-  }
+  },
+  mounted () {
+        const that = this
+        window.onresize = () => {
+            return (() => {
+                window.screenWidth = document.body.clientWidth
+                that.screenWidth = window.screenWidth
+            })()
+        }
+    }
 };
 </script>
 
@@ -229,9 +257,10 @@ nav .user .drop-menu li a i {
   font-size: 20px;
   display: inline-block;
 }
-nav .nav-list{
-    float: left;
-    margin: 0;
+nav .nav-list {
+  float: left;
+  margin: 0;
+  background: white;
 }
 /* nav .nav-list:after{
     content: '';
@@ -240,100 +269,162 @@ nav .nav-list{
     visibility: hidden;
     clear: both;
 } */
-nav .nav-list>li{
-    float: left;
-    margin-right: 5px;
+nav .nav-list > li {
+  float: left;
+  margin-right: 5px;
 }
-nav .nav-list>li a{
-    display: block;
-    height: 56px;
-    line-height: 26px;
-    padding: 15px;
+nav .nav-list > li a {
+  display: block;
+  height: 56px;
+  line-height: 26px;
+  padding: 15px;
 }
-nav .nav-list>li a.active{
-    color: #ea6f5a;
-    background: none!important;
+nav .nav-list > li a.active {
+  color: #ea6f5a;
+  background: none !important;
 }
-nav .nav-list>li a:hover{
-    background: #f5f5f5;
+nav .nav-list > li a:hover {
+  background: #f5f5f5;
 }
-nav .nav-list>li a i{
-    margin-right: 5px;
-    font-size: 20px;
+nav .nav-list > li a i {
+  margin-right: 5px;
+  font-size: 20px;
 }
-nav .nav-list .search{
-    padding-left: 15px;
-    margin-right: 10px;
+nav .nav-list .search {
+  padding-left: 15px;
+  margin-right: 10px;
 }
-nav .nav-list .search form{
-    margin-bottom: 20px;
-    position: relative;
-    top: 9px;
+nav .nav-list .search form {
+  margin-bottom: 20px;
+  position: relative;
+  top: 9px;
 }
-nav .nav-list .search form .search-input{
-    width: 240px;
-    height: 38px;
-    font-size:14px;
-    padding: 0 40px 0 20px;
-    border: 1px solid #eee;
-    background: #eee;
-    border-radius: 40px;
-    transition: width .5s;
+nav .nav-list .search form .search-input {
+  width: 240px;
+  height: 38px;
+  font-size: 14px;
+  padding: 0 40px 0 20px;
+  border: 1px solid #eee;
+  background: #eee;
+  border-radius: 40px;
+  transition: width 0.5s;
 }
-nav .nav-list .search form .search-input:focus{
-    width: 320px;
+nav .nav-list .search form .search-input:focus {
+  width: 320px;
 }
-nav .nav-list .search form .search-input:focus ~ .search-btn{
-    background: #969696;
-    color: white;
-    border-radius: 50%;
-    font-size: 5px;
+nav .nav-list .search form .search-input:focus ~ .search-btn {
+  background: #969696;
+  color: white;
+  border-radius: 50%;
+  font-size: 5px;
 }
-nav .nav-list .search form .search-btn{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 4px;
-    right: 5px;
-    color: #969696;
-    text-align: center;
-    padding: 0;
+nav .nav-list .search form .search-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 4px;
+  right: 5px;
+  color: #969696;
+  text-align: center;
+  padding: 0;
 }
-nav .nav-list .search form .search-btn:hover{
-    background: none;
+nav .nav-list .search form .search-btn:hover {
+  background: none;
 }
 
-nav .nav-list .search form .search-btn i{
-    display: block!important;
-    margin: 0;
+nav .nav-list .search form .search-btn i {
+  display: block !important;
+  margin: 0;
+  text-align: center;
+  line-height: 30px;
+}
+nav .container .navbar-header button {
+  float: left;
+  padding: 11px 10px;
+  margin-top: 9px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  display: none;
+}
+nav .container .navbar-header button:hover {
+  background: #f7f7f7;
+  cursor: pointer;
+}
+nav .container .navbar-header button:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+nav .container .navbar-header button .icon {
+  background-color: #969696;
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin-top: 4px;
+}
+nav .container .navbar-header button .icon:nth-of-type(1) {
+  margin-top: 0;
+}
+
+@media (max-width: 1440px) {
+  nav .nav-list > li a i {
+    display: none;
+  }
+  nav .nav-list .search form .search-input {
+    width: 160px;
+  }
+  nav .nav-list .search form .search-input:focus {
+    width: 240px;
+  }
+}
+@media (max-width: 1080px) {
+  .container {
+    width: 735px;
+  }
+  nav .nav-list li span {
+    display: none;
+  }
+  nav .nav-list > li a i {
+    display: block;
+    height: 226px;
+  }
+}
+@media (max-width: 768px) {
+  nav .nav-list {
+    /* display: none; */
+    overflow: hidden;
+    width: 100%;
+    float: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.5s;
+  }
+  nav .container .navbar-header button {
+    display: block;
+  }
+  nav .nav-list li span {
+    display: block;
+  }
+  nav .nav-list > li a i {
+    display: none;
+  }
+  nav .nav-list li {
+    float: none;
+    /* display: block; */
+  }
+  nav .nav-list li span {
     text-align: center;
-    line-height: 30px;
-}
-@media (max-width:1440px){
-    nav .nav-list>li a i{
-        display: none;
-    }
-    nav .nav-list .search form .search-input{
-        width: 160px;
-    }
-    nav .nav-list .search form .search-input:focus{
-        width: 240px;
-    }
-}
-@media (max-width:1080px){
-    .container {
-      width: 735px;
-    }
-    nav .nav-list li span{
-        display: none;
-    }
-    nav .nav-list>li a i{
-        display: block;
-    }
-}
-@media (max-width:768px) {
-    nav .nav-list{
-        display: none;
-    }
+  }
+  nav .nav-list .search form .search-input {
+    width: 100%;
+  }
+  nav .nav-list .search form .search-input:focus {
+    width: 100%;
+  }
 }
 </style>
