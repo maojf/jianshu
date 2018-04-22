@@ -54,8 +54,8 @@
                 <!--右上角-->
                 <!--导航部分-->
                 <div class="container">
-                    <div class="navbar-header">
-                        <button @click="isNavListShow=!isNavListShow">
+                    <div class="navbar-header" @click="navbarClick()">
+                        <button> <!--**********************************************************************-->
                             <span class="icon"></span>
                             <span class="icon"></span>
                             <span class="icon"></span>
@@ -63,10 +63,10 @@
                     </div>
 
 
-                    <transition name="custom-classes-transition" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
+
 
   
-                    <ul class="nav-list" v-show="screenWidth>768?true:isNavListShow">
+                    <ul class="nav-list" v-show="isNavListShow||screenWidth>768"> <!--**********************************************************************-->
                         <li>
                             <nuxt-link to="/" class="active">
                                 <i class="fa fa-compass"></i>
@@ -84,7 +84,7 @@
                                 <i class="fa fa-bell-o"></i>
                                 <span>消息</span>
                             </nuxt-link>
-                            <ul class="drop-menu" v-show="notifyShow&&screenWidth>768">
+                            <ul class="drop-menu" v-show="notifyShow&&screenWidth>768"> <!--**********************************************************************-->
                                 <li>
                                     <nuxt-link to="/">
                                         <i class="fa fa-comment-o"></i>
@@ -122,7 +122,6 @@
                     </ul>
 
 
-                    </transition>
 
 
                 </div>
@@ -137,19 +136,56 @@ export default {
     return {
       isShow: false,
       notifyShow: false,
-      isNavListShow:false,
-      screenWidth: 0
+      isNavListShow:true,
+      screenWidth:0,
+      num:0
     };
   },
-  mounted () {
-        const that = this
-        window.onresize = () => {
-            return (() => {
-                window.screenWidth = document.body.clientWidth
-                that.screenWidth = window.screenWidth
-            })()
-        }
+  methods:{
+    navbarClick(){
+      var navList = document.querySelector('.nav-list');
+      this.num+=1
+      if(this.num%2==1){
+        navList.style.maxHeight = '226px';
+      }else{
+        navList.style.maxHeight = '0';
+      }
+      
+      // var navClass = navList.getAttribute('class');
+      // if(navClass === 'nav-list'||navClass ==='nav-list nav-list-up-ing'){
+      //   setTimeout(() => {
+      //    this.isNavListShow = true;
+      //   }, 0);
+      //   setTimeout(() => {
+      //    navList.classList = 'nav-list nav-list-down-ing';
+      //   }, 0);
+      //   setTimeout(() => {
+      //     navList.classList = 'nav-list nav-list-down';
+      //   }, 500);
+      // }
+      // else if(navClass == 'nav-list nav-list-down-ing'||navClass ==='nav-list nav-list-down'){
+      //   navList.classList = 'nav-list nav-list-up-ing';
+      //   setTimeout(() => {
+      //     navList.classList = 'nav-list';
+      //     this.isNavListShow = false
+      //   }, 500);  
+      // }
     }
+  },
+  mounted () {
+            const that = this
+            window.onresize = () => {
+                return (() => {
+                    window.screenWidth = document.body.clientWidth
+                    that.screenWidth = window.screenWidth
+                })()
+            }
+        },
+  watch: {
+            screenWidth (val) {
+                this.screenWidth = val
+            }
+        }    
 };
 </script>
 
@@ -260,7 +296,7 @@ nav .user .drop-menu li a i {
 nav .nav-list {
   float: left;
   margin: 0;
-  background: white;
+  background: white;     /**************************************************************************************/
 }
 /* nav .nav-list:after{
     content: '';
@@ -369,6 +405,15 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
   margin-top: 0;
 }
 
+
+
+
+
+
+
+
+
+
 @media (max-width: 1440px) {
   nav .nav-list > li a i {
     display: none;
@@ -392,9 +437,10 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
     height: 226px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 768px) {   /**************************************************************************************/
   nav .nav-list {
-    /* display: none; */
+    max-height: 0;
+    display: block;
     overflow: hidden;
     width: 100%;
     float: none;
