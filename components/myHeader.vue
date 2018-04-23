@@ -9,7 +9,7 @@
                 <!--右上角，写文章-->
                 <nuxt-link to="/write" class="write-btn">
                     <i class="fa fa-edit"></i>
-                    写文章
+                    写文章aaaaaa
                 </nuxt-link>
                 <!--登录用户信息-->
                 <div class="user" @mouseover="isShow=true" @mouseleave="isShow=false">
