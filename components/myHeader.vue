@@ -54,8 +54,8 @@
                 <!--右上角-->
                 <!--导航部分-->
                 <div class="container">
-                    <div class="navbar-header" @click="navbarClick()">
-                        <button> <!--**********************************************************************-->
+                    <div class="navbar-header">
+                        <button @click="isNavListShow=!isNavListShow"> <!--**********************************************************************-->
                             <span class="icon"></span>
                             <span class="icon"></span>
                             <span class="icon"></span>
@@ -64,9 +64,9 @@
 
 
 
-
+                    <transition enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
   
-                    <ul class="nav-list" v-show="isNavListShow||screenWidth>768"> <!--**********************************************************************-->
+                    <ul class="nav-list" v-show="isNavListShow"> <!--**********************************************************************-->
                         <li>
                             <nuxt-link to="/" class="active">
                                 <i class="fa fa-compass"></i>
@@ -84,7 +84,7 @@
                                 <i class="fa fa-bell-o"></i>
                                 <span>消息</span>
                             </nuxt-link>
-                            <ul class="drop-menu" v-show="notifyShow&&screenWidth>768"> <!--**********************************************************************-->
+                            <ul class="drop-menu" v-show="notifyShow"> <!--**********************************************************************-->
                                 <li>
                                     <nuxt-link to="/">
                                         <i class="fa fa-comment-o"></i>
@@ -121,7 +121,7 @@
                         </li>
                     </ul>
 
-
+                    </transition>
 
 
                 </div>
@@ -136,56 +136,36 @@ export default {
     return {
       isShow: false,
       notifyShow: false,
-      isNavListShow:true,
+      isNavListShow:false,
       screenWidth:0,
       num:0
     };
   },
-  methods:{
-    navbarClick(){
-      var navList = document.querySelector('.nav-list');
-      this.num+=1
-      if(this.num%2==1){
-        navList.style.maxHeight = '226px';
-      }else{
-        navList.style.maxHeight = '0';
-      }
-      
-      // var navClass = navList.getAttribute('class');
-      // if(navClass === 'nav-list'||navClass ==='nav-list nav-list-up-ing'){
-      //   setTimeout(() => {
-      //    this.isNavListShow = true;
-      //   }, 0);
-      //   setTimeout(() => {
-      //    navList.classList = 'nav-list nav-list-down-ing';
-      //   }, 0);
-      //   setTimeout(() => {
-      //     navList.classList = 'nav-list nav-list-down';
-      //   }, 500);
-      // }
-      // else if(navClass == 'nav-list nav-list-down-ing'||navClass ==='nav-list nav-list-down'){
-      //   navList.classList = 'nav-list nav-list-up-ing';
-      //   setTimeout(() => {
-      //     navList.classList = 'nav-list';
-      //     this.isNavListShow = false
-      //   }, 500);  
-      // }
-    }
-  },
-  mounted () {
-            const that = this
-            window.onresize = () => {
-                return (() => {
-                    window.screenWidth = document.body.clientWidth
-                    that.screenWidth = window.screenWidth
-                })()
-            }
-        },
-  watch: {
-            screenWidth (val) {
-                this.screenWidth = val
-            }
-        }    
+  // methods:{
+  //   navbarClick(){
+  //     var navList = document.querySelector('.nav-list');
+  //     this.num+=1
+  //     if(this.num%2==1){
+  //       navList.style.maxHeight = '226px';
+  //     }else{
+  //       navList.style.maxHeight = '0';
+  //     }
+  //   }
+  // },
+  // mounted () {
+  //           const that = this
+  //           window.onresize = () => {
+  //               return (() => {
+  //                   window.screenWidth = document.body.clientWidth
+  //                   that.screenWidth = window.screenWidth
+  //               })()
+  //           }
+  //       },
+  // watch: {
+  //           screenWidth (val) {
+  //               this.screenWidth = val
+  //           }
+  //       }    
 };
 </script>
 
@@ -439,8 +419,9 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
 }
 @media (max-width: 768px) {   /**************************************************************************************/
   nav .nav-list {
-    max-height: 0;
-    display: block;
+    /* max-height: 0; */
+    /* display: block; */
+    z-index: -10;
     overflow: hidden;
     width: 100%;
     float: none;
@@ -448,7 +429,7 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
     top: 56px;
     left: 0;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    transition: max-height 0.5s;
+    /* transition: max-height 0.5s; */
   }
   nav .container .navbar-header button {
     display: block;
@@ -471,6 +452,12 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
   }
   nav .nav-list .search form .search-input:focus {
     width: 100%;
+  }
+}
+
+@media (min-width:768px) {
+  .nav-list{
+    display: block!important;
   }
 }
 </style>
