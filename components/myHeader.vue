@@ -256,6 +256,7 @@ nav .user .drop-menu {
   margin: 0;
   padding: 10px 0;
   font-size: 15px;
+  background: white;
 }
 nav .user .drop-menu li a {
   padding: 10px 20px;
