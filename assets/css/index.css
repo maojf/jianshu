@@ -1,0 +1,48 @@
+/* *************************************首页布局开始**************************************** */
+.index .main{
+    padding-top: 30px;
+    padding-right: 0;
+}
+.index .aside{
+    padding-top: 30px;
+}
+.index .main .recommend-collection{
+    margin-bottom: 20px;
+}
+.index .main .recommend-collection .collection{
+    display: inline-block;
+    margin: 0 18px 18px 0;
+    border: 1px solid #dcdcdc;
+    background: #f7f7f7;
+    border-radius: 4px;
+    height: 34px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.index .main .recommend-collection .collection img{
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    vertical-align: middle;
+}
+.index .main .recommend-collection .collection span{
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 10px;
+    max-width: 150px;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.index .main .recommend-collection a.more-collection {
+    margin-top: 7px;
+    display: inline-block;
+    font-size: 14px;
+    color: #787878;
+}
+.index .main .split-line{
+    margin-top: -10px;
+    margin-bottom: 15px;
+    border-top: 1px solid #f0f0f0;
+}

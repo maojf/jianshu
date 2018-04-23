@@ -53,77 +53,79 @@
                 </div>
                 <!--右上角-->
                 <!--导航部分-->
+                
                 <div class="container">
+                  <div class="row">
                     <div class="navbar-header">
-                        <button @click="isNavListShow=!isNavListShow"> <!--**********************************************************************-->
-                            <span class="icon"></span>
-                            <span class="icon"></span>
-                            <span class="icon"></span>
-                        </button>
+                      <button @click="isNavListShow=!isNavListShow"> <!--**********************************************************************-->
+                        <span class="icon"></span>
+                        <span class="icon"></span>
+                        <span class="icon"></span>
+                      </button>
                     </div>
-
-
 
                     <transition enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
   
-                    <ul class="nav-list" v-show="isNavListShow"> <!--**********************************************************************-->
+                      <ul class="nav-list" v-show="isNavListShow"> <!--**********************************************************************-->
                         <li>
-                            <nuxt-link to="/" class="active">
-                                <i class="fa fa-compass"></i>
-                                <span>发现</span>
-                            </nuxt-link>
+                          <nuxt-link to="/" class="active">
+                            <i class="fa fa-compass"></i>
+                            <span>发现</span>
+                          </nuxt-link>
                         </li>
                         <li>    
-                            <nuxt-link to="/follow">
-                                <i class="fa fa-book"></i>
-                                <span>关注</span>
-                            </nuxt-link>
+                          <nuxt-link to="/follow">
+                            <i class="fa fa-book"></i>
+                            <span>关注</span>
+                          </nuxt-link>
                         </li>
                         <li class="user" @mouseover="notifyShow=true" @mouseleave="notifyShow=false">
-                            <nuxt-link to="/notify">
-                                <i class="fa fa-bell-o"></i>
-                                <span>消息</span>
-                            </nuxt-link>
-                            <ul class="drop-menu" v-show="notifyShow"> <!--**********************************************************************-->
-                                <li>
-                                    <nuxt-link to="/">
-                                        <i class="fa fa-comment-o"></i>
-                                        评论
-                                    </nuxt-link>
+                          <nuxt-link to="/notify">
+                              <i class="fa fa-bell-o"></i>
+                              <span>消息</span>
+                          </nuxt-link>
+                          <ul class="drop-menu" v-show="notifyShow"> <!--**********************************************************************-->
+                            <li>
+                              <nuxt-link to="/">
+                                <i class="fa fa-comment-o"></i>
+                                  评论
+                                  </nuxt-link>
                                 </li>
                                 <li>
-                                    <nuxt-link to="/">
-                                        <i class="fa fa-envelope"></i>
-                                        简信
-                                    </nuxt-link>
+                                  <nuxt-link to="/">
+                                    <i class="fa fa-envelope"></i>
+                                    简信
+                                  </nuxt-link>
                                 </li>
                                 <li>
-                                    <nuxt-link to="/">
-                                        <i class="fa fa-plus-square-o"></i>
-                                        关注
-                                    </nuxt-link>
+                                  <nuxt-link to="/">
+                                    <i class="fa fa-plus-square-o"></i>
+                                      关注
+                                  </nuxt-link>
                                 </li>
                                 <li>
-                                    <nuxt-link to="/">
-                                        <i class="fa fa-heart-o"></i>
-                                        喜欢和赞
-                                    </nuxt-link>
+                                  <nuxt-link to="/">
+                                    <i class="fa fa-heart-o"></i>
+                                    喜欢和赞
+                                  </nuxt-link>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="search">
+                          </li>
+                          <li class="search">
                             <form method="post">
                                 <input type="text" placeholder="搜索" class="search-input">
                                 <a href="#" class="search-btn">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li>
-                    </ul>
+                          </li>
+                      </ul>
 
                     </transition>
 
 
+                  </div>
+                   
                 </div>
             </div>
         </nav>
@@ -136,11 +138,11 @@ export default {
     return {
       isShow: false,
       notifyShow: false,
-      isNavListShow:false,
-      screenWidth:0,
-      num:0
+      isNavListShow: false,
+      screenWidth: 0,
+      num: 0
     };
-  },
+  }
   // methods:{
   //   navbarClick(){
   //     var navList = document.querySelector('.nav-list');
@@ -165,7 +167,7 @@ export default {
   //           screenWidth (val) {
   //               this.screenWidth = val
   //           }
-  //       }    
+  //       }
 };
 </script>
 
@@ -222,6 +224,7 @@ nav .write-btn:hover {
 nav .user {
   position: relative;
   float: right;
+  overflow: hidden;
 }
 nav .user:hover {
   background: #f5f5f5;
@@ -256,6 +259,7 @@ nav .user .drop-menu {
   margin: 0;
   padding: 10px 0;
   font-size: 15px;
+  background: white;
 }
 nav .user .drop-menu li a {
   padding: 10px 20px;
@@ -276,7 +280,7 @@ nav .user .drop-menu li a i {
 nav .nav-list {
   float: left;
   margin: 0;
-  background: white;     /**************************************************************************************/
+  background: white; /**************************************************************************************/
 }
 /* nav .nav-list:after{
     content: '';
@@ -385,15 +389,6 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
   margin-top: 0;
 }
 
-
-
-
-
-
-
-
-
-
 @media (max-width: 1440px) {
   nav .nav-list > li a i {
     display: none;
@@ -406,9 +401,6 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
   }
 }
 @media (max-width: 1080px) {
-  .container {
-    width: 735px;
-  }
   nav .nav-list li span {
     display: none;
   }
@@ -417,7 +409,8 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
     height: 226px;
   }
 }
-@media (max-width: 768px) {   /**************************************************************************************/
+@media (max-width: 768px) {
+  /**************************************************************************************/
   nav .nav-list {
     /* max-height: 0; */
     /* display: block; */
@@ -455,9 +448,9 @@ nav .container .navbar-header button .icon:nth-of-type(1) {
   }
 }
 
-@media (min-width:768px) {
-  .nav-list{
-    display: block!important;
+@media (min-width: 768px) {
+  .nav-list {
+    display: block !important;
   }
 }
 </style>

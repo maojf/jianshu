@@ -1,7 +1,43 @@
 <template>
     <div id="index" style="height:100%">
         <my-header></my-header>
-        <p>我的主题内容部分</p>
+        <div class="container index">
+            <div class="row">
+                <div class="col-xs-16 main">
+                    <!--热门专题-->
+                    <div class="recommend-collection">
+                        <nuxt-link class="collection" to="/collection/123">
+                            <img src="~/assets/img/c1.jpg">
+                            <span name="name">故事</span>
+                        </nuxt-link>
+                        <nuxt-link class="collection" to="/collection/123">
+                            <img src="~/assets/img/c2.jpg">
+                            <span name="name">摄影</span>
+                        </nuxt-link>
+                        <nuxt-link class="collection" to="/collection/123">
+                            <img src="~/assets/img/c3.jpg">
+                            <span name="name">人文社科</span>
+                        </nuxt-link>
+                        <nuxt-link class="collection" to="/collection/123">
+                            <img src="~/assets/img/c4.jpg">
+                            <span name="name">历史</span>
+                        </nuxt-link>
+                        <nuxt-link class="collection" to="/collection/123">
+                            <img src="~/assets/img/c5.jpg">
+                            <span name="name">读书</span>
+                        </nuxt-link>
+                        <nuxt-link class="more-collection" to="/">
+                            更多热门专题
+                            <i class="fa fa-angle-right"></i>
+                        </nuxt-link>   
+                    </div>
+                    <div class="split-line"></div>
+                </div>
+                <div class="col-xs-offset-1 col-xs-7 aside">
+                    侧边栏
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
