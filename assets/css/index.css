@@ -193,6 +193,13 @@
     float: right;
     color: #969696;
 }
+.index .aside .recommended-author .title .page-change:hover {
+    cursor: pointer;
+    color: #787878;
+}
+.index .aside .recommended-author .title .page-change i{
+    transition: transform 0.5s;
+}
 .index .aside .recommended-author .recommended-list {
     text-align: left;
     margin-bottom: 20px;
@@ -211,6 +218,12 @@
     font-size: 13px;
     color: #42c02e;
     margin-top: 5px;
+}
+.index .aside .recommended-author .recommended-list li .following{
+    float: right;
+    font-size: 13px;
+    margin-top: 5px;
+    color: rgb(150, 150, 150);
 }
 .index .aside .recommended-author .recommended-list li .name{
     margin-right: 60px;

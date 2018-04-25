@@ -201,26 +201,30 @@
                     <div class="recommended-author">
                         <div class="title">
                             <span>推荐作者</span>
-                            <nuxt-link to="/" class="page-change">
-                                <i class="fa fa-refresh"></i>
+                            <a class="page-change" @click="rotateDeg+=360">
+                                <i class="fa fa-refresh" :style="{'transform':'rotate('+rotateDeg+'deg)'}"></i>
                                 换一批
-                            </nuxt-link>
+                            </a>
                         </div>
                         <ul class="recommended-list">
                             <li>
                                 <nuxt-link class="avatar" to="/u/123">
                                     <img src="~/assets/img/1.jpg">
                                 </nuxt-link>
-                                <a href="#" class="follow">
-                                    <i class="fa fa-plus"></i>
-                                    关注
+                                <!-- <a href="#" :class="[attention=='关注'?'follow':'following']" @click="attention=(attention=='关注'?'已关注':'关注')" @mouseover="attention=='关注'?'':attention='取消关注'"  @mouseleave="attention=='关注'?'':attention='已关注'">
+                                    <i :class="[attention=='关注'?'fa fa-plus':'fa fa-check',attention=='已关注'?'fa fa-check':'fa fa-close']"></i>
+                                    {{attention}}
+                                </a> -->
+                                <a href="#" :class="[a?'follow':'following']" @click="a=!a;b=true" @mouseover="a?'':b=false" @mouseleave="a?'':b=true">
+                                    <i :class="[a?'fa fa-plus':'fa fa-check',b?'fa fa-check':'fa fa-close']"></i>
+                                    {{a?'关注':b?'已关注':'取消关注'}}
                                 </a>
                                 <nuxt-link to="/u/123" class="name">
                                     简书用户
                                 </nuxt-link>
                                 <p>写了1958K字-1.9K喜欢</p>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <nuxt-link class="avatar" to="/u/123">
                                     <img src="~/assets/img/1.jpg">
                                 </nuxt-link>
@@ -284,7 +288,7 @@
                                     简书用户
                                 </nuxt-link>
                                 <p>写了1958K字-1.9K喜欢</p>
-                            </li>
+                            </li> -->
                         </ul>
                         <nuxt-link to="/" class="find-more">
                             查看全部
@@ -314,7 +318,11 @@
         },
         data () {
             return {
-                name:'首页'
+                name:'首页',
+                rotateDeg:90,
+                attention:'关注',
+                a:true,
+                b:true
             }
         }
     }
