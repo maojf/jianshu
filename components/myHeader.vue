@@ -140,32 +140,7 @@ export default {
       screenWidth:0,
       num:0
     };
-  },
-  // methods:{
-  //   navbarClick(){
-  //     var navList = document.querySelector('.nav-list');
-  //     this.num+=1
-  //     if(this.num%2==1){
-  //       navList.style.maxHeight = '226px';
-  //     }else{
-  //       navList.style.maxHeight = '0';
-  //     }
-  //   }
-  // },
-  // mounted () {
-  //           const that = this
-  //           window.onresize = () => {
-  //               return (() => {
-  //                   window.screenWidth = document.body.clientWidth
-  //                   that.screenWidth = window.screenWidth
-  //               })()
-  //           }
-  //       },
-  // watch: {
-  //           screenWidth (val) {
-  //               this.screenWidth = val
-  //           }
-  //       }    
+  }   
 };
 </script>
 

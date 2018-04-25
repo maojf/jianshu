@@ -97,20 +97,24 @@
                         </a>
                     </div>
                 </div>
+                <!--留言组件-->
+                <my-comment></my-comment>
             </div>
         </div>
     </div>
 </template>
 <script>
     import myHeader from  '~/components/myHeader'
+    import myComment from '~/components/myComment'
     export default {
         data () {
             return {
-                name:'page'
+                
             }
         },
         components:{
-            myHeader
+            myHeader,
+            myComment
         }
     }
 </script>
