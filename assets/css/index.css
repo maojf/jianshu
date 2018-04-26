@@ -385,6 +385,7 @@
     position:relative;
     border:1px solid #EA6F5A;
     border-radius: 40px;
+    user-select: none;
 }
 .note .post .meta-bottom .like:hover{
     background: rgb(254,246,247);
@@ -406,6 +407,22 @@
     background-position:left;
     background-repeat: no-repeat;
     background-size:1000px 50px;
+}
+.note .post .meta-bottom .like.active .like-btn:before{
+    /* background-position: right;
+    transition: .6s;
+    transition-timing-function: steps(19); */
+    animation: myanimate 1s steps(19) forwards;
+    animation-iteration-count: 1;   
+} 
+.note .post .meta-bottom .like.active{
+    background:#ea6f5a;
+}
+.note .post .meta-bottom .like.active .like-btn a,.note .post .meta-bottom .like.active .like-num a{
+    color: white;
+}
+.note .post .meta-bottom .like.active .like-num{
+    border-left-color: white;
 }
 .note .post .meta-bottom .like .like-btn a {
     padding:18px 30px 18px 55px;
@@ -457,4 +474,10 @@ i.fa-qq{
       border-radius: 40px;
       text-align: center;
       color: #9b9b9b
+  }
+
+
+  @keyframes myanimate{
+      from{background-position: left}
+      to{background-position: right}
   }

@@ -74,18 +74,19 @@
                 </div>
                 <!--更多分享-->
                 <div class="meta-bottom">
-                    <div class="like">
+                    <div class="like" :class="{active:isLike}" @click="isLike=!isLike;isLike?likeNum+=1:likeNum-=1">
                         <div class="like-btn">
-                            <a href="#">喜欢</a>
+                            <a>喜欢</a>
                         </div>
                         <div class="like-num">
-                            <a href="#">50</a>
+                            <a>{{likeNum}}</a>
                         </div>
                     </div>
                     <div class="share">
                         <a href="#" class="share-btn">
                             <i class="fa fa-qq"></i>
                         </a>
+                        
                         <a href="#" class="share-btn">
                             <i class="fa fa-weibo"></i>
                         </a>
@@ -109,7 +110,8 @@
     export default {
         data () {
             return {
-                
+                isLike:false,
+                likeNum:50
             }
         },
         components:{
