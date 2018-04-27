@@ -13,9 +13,8 @@
 // // 引入bootstrap-vue.css文件
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-
 export default {
-
+  
 }
 </script>
 

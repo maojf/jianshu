@@ -84,6 +84,7 @@
 </template>
 <script>
 import myForm from "~/components/myForm";
+
 export default {
   data() {
     return {
@@ -259,15 +260,15 @@ export default {
 .comment-list .new-comment .write-function-block {
   height: 50px;
 }
-.comment-list .new-comment .write-function-block .emoji {
+.comment-list .new-comment .write-function-block .emoji-a {
   float: left;
   margin-top: 14px;
 }
-.comment-list .new-comment .write-function-block .emoji i {
+.comment-list .new-comment .write-function-block .emoji-a i {
   font-size: 20px;
   color: #969696;
 }
-.comment-list .new-comment .write-function-block .emoji i:hover {
+.comment-list .new-comment .write-function-block .emoji-a i:hover {
   color: #2f2f2f;
 }
 .comment-list .new-comment .write-function-block .hint {

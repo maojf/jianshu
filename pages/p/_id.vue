@@ -83,19 +83,55 @@
                         </div>
                     </div>
                     <div class="share">
-                        <a href="#" class="share-btn">
+                        <a href="javascript:void(0)" class="share-btn" v-tooltip="'分享到QQ'">
                             <i class="fa fa-qq"></i>
                         </a>
                         
-                        <a href="#" class="share-btn">
+                        <a href="javascript:void(0)" class="share-btn" v-tooltip="'分享到微博'">
                             <i class="fa fa-weibo"></i>
                         </a>
-                        <a href="#" class="share-btn">
+                        <a href="javascript:void(0)" class="share-btn" v-tooltip="'分享到微信'">
                             <i class="fa fa-weixin"></i>
                         </a>
-                        <a href="#" class="share-btn more-share">
-                            更多分享
-                        </a>
+
+                        <v-popover>
+                            <p href="javascript:void(0)" class="share-btn more-share ">更多分享</p>
+                            <template slot="popover">
+                                <ul v-close-popover>
+                                    <li>
+                                        <a href="">
+                                            <i></i>
+                                            <span>分享到QQ空间</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i></i>
+                                            <span>分享到Twitter</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i></i>
+                                            <span>分享到Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i></i>
+                                            <span>分享到Googel+</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i></i>
+                                            <span>分享到豆瓣</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </template>
+                        </v-popover>
+                        
                     </div>
                 </div>
                 <!--留言组件-->
@@ -111,7 +147,8 @@
         data () {
             return {
                 isLike:false,
-                likeNum:50
+                likeNum:50,
+                count:'123'
             }
         },
         components:{

@@ -475,8 +475,40 @@ i.fa-qq{
       text-align: center;
       color: #9b9b9b
   }
-
-
+.note .post .meta-bottom .share .v-popover{
+    display: inline-block;
+}
+/* .tooltip.popover .popover-inner{
+    position: absolute;
+    top: -200px;
+    width: 200px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    display: inline-block;
+} */
+.tooltip.popover.vue-popover-theme.open .wrapper .tooltip-inner.popover-inner{
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.tooltip.popover.vue-popover-theme.open .wrapper .tooltip-inner.popover-inner li a{
+    vertical-align: middle
+}
+.tooltip.popover.vue-popover-theme.open .wrapper .tooltip-inner.popover-inner li i{
+    background-image: url(~/assets/img/asd.png);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.tooltip.popover.vue-popover-theme.open .wrapper .tooltip-inner.popover-inner li span{
+    vertical-align: middle;
+    line-height: 20px;
+}
+.tooltip.popover.vue-popover-theme.open .wrapper .tooltip-arrow.popover-arrow{
+    border: 10px solid;
+    top: 202px;
+}
+.tooltip.popover.vue-popover-theme.open{
+    top: -10px!important
+}
   @keyframes myanimate{
       from{background-position: left}
       to{background-position: right}
